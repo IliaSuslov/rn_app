@@ -15,7 +15,6 @@ const initialState = {
     group: null,
     items: [
         {
-            id: 1,
             image: 'pizza',
             rating: '4',
             name: 'С копчёной курицей',
@@ -37,7 +36,7 @@ const initialState = {
             tag: 'Ролы'
         },
         {
-            id: 3,
+
             image: 'sushi',
             rating: '4.8',
             name: 'Суши123',
@@ -48,7 +47,6 @@ const initialState = {
             tag: 'Ролы'
         },
         {
-            id: 4,
             image: 'pizza',
             rating: '3',
             name: 'Сырная',
@@ -59,7 +57,6 @@ const initialState = {
             tag: 'Пицца'
         },
         {
-            id: 5,
             image: 'sushi',
             rating: '4.8',
             name: 'Гренки',
@@ -70,7 +67,6 @@ const initialState = {
             tag: 'Закуски'
         },
         {
-            id: 6,
             image: 'pizza',
             rating: '3',
             name: 'Салат крабовый',
@@ -81,7 +77,6 @@ const initialState = {
             tag: 'Салаты'
         },
         {
-            id: 7,
             image: 'sushi',
             rating: '4.8',
             name: 'Суп1',
@@ -92,7 +87,6 @@ const initialState = {
             tag: 'Суп'
         },
         {
-            id: 8,
             image: 'pizza',
             rating: '3',
             name: 'Суп',
@@ -102,7 +96,7 @@ const initialState = {
             mass: '450 г',
             tag: 'Супы'
         },
-    ]
+    ].map((v,i)=>({...v,id: `f-${i+1}`}))
 };
 
 const Food = (state = initialState, action) => {

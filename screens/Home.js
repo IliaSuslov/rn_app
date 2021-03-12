@@ -14,7 +14,7 @@ const Home = (props) => {
     const { food, navi } = props;
     return (
         <View>
-            { navi.item !== -1 ? <Item {...navi} item={food.items[navi.item]} />
+            { navi.item !== -1 ? <Item {...navi} item={food.items.filter(v=>v.id===navi.item)[0]} />
                 : (<View>
                     <View style={{ marginVertical: 10, marginHorizontal: 10 }}>
                         <TopMenu {...food} />

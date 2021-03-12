@@ -10,6 +10,7 @@ import { connect } from 'react-redux'
 
 const FoodItem = (props) => {
     const { rating, image, price, mass, name, id } = props
+    console.log(id);
     const item = { image, rating }
     return (
         <View style={styles.container}>
