@@ -1,14 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
-import { getFood } from '../store/actions/food';
-import { SET_GROUP } from '../store/actions/types';
-
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Button } from 'react-native-paper';
 
 const TopNav = (props) => {
-    const { food, navigation } = props;
+    const { food } = props;
     return (
         <View style={styles.topnav}>
             {food.groups.map((v, i) =>

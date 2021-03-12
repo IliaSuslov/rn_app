@@ -6,23 +6,25 @@ import {
 } from 'react-native';
 import TopNav from '../components/TopNavigatoin';
 import TopMenu from '../components/TopMenu';
-import FoodItem from '../components/FoodItem';
+import FoodItem from '../components/FoodListItem';
+import Item from '../screens/food/Item';
 import { connect } from 'react-redux'
-import { SET_ITEM } from '../store/actions/types';
-
 
 const Home = (props) => {
-    // console.log(props.food);
-    const { food } = props;
+    const { food, navi } = props;
     return (
         <View>
-            <View style={{ marginVertical: 10, marginHorizontal: 10 }}>
-                <TopMenu {...food}/>
-                <TopNav navigation={props.navigation} />
-            </View>
-            <ScrollView style={{marginBottom: '30%'}}>
-                {food.pizza.map((v, i) => <View key={`item-${i}`}><FoodItem {...v}/></View>)}
-            </ScrollView>
+            { navi.item !== -1 ? <Item {...navi} item={food.items[navi.item]} />
+                : (<View>
+                    <View style={{ marginVertical: 10, marginHorizontal: 10 }}>
+                        <TopMenu {...food} />
+                        <TopNav />
+                    </View>
+                    <ScrollView style={{ marginBottom: '60%' }}>
+                        {food.items.filter(v => food.group ? food.group === v.tag : true).map(v => <View key={`item-${v.id}`}><FoodItem id={v.id} {...v} /></View>)}
+                    </ScrollView>
+                </View>)
+            }
         </View>
     )
 }

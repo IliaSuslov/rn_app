@@ -7,17 +7,19 @@ import {
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons'
+import { getImage } from "../store/reducers/Food"
 
 const ProdImage = (props) => {
-    const { rating, image } = props
+    const {item={}}=props;
+    const { image, rating } = item
     return (
         <View style={styles.image} >
             <Image
-                source={image}
+                source={getImage(image)}
                 style={styles.foodimg}
             />
             <Text style={styles.badge}>{rating}</Text>
-            <FontAwesomeIcon style={styles.info} color={'white'} size={25} icon={faExclamationCircle} />
+            <FontAwesomeIcon style={styles.info} color={'#20C845'} size={5} icon={faExclamationCircle} />
         </View>
     )
 }
@@ -46,15 +48,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-end',
         position: 'absolute',
         bottom: 0,
-        width: '15%',
-        height: '15%',
-        shadowColor: '#30C1DD',
-        shadowRadius: 20,
-        shadowOpacity: 0.6,
-        elevation: 8,
-        shadowOffset: {
-            width: 0,
-            height: 4
-        }
+        marginRight: '20%',
+        marginBottom: '10%',
     },
 });

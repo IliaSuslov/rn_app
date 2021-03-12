@@ -6,14 +6,14 @@ import {
     TouchableOpacity,
 } from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faSearch, faFilter } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faFilter, faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 const TopMenu = (props) => {
     const { address } = props
     return (
         <View style={styles.topcon}>
             <View>
-                <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Доставка</Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 16 }}>Доставка <FontAwesomeIcon icon={faChevronDown} size={10} /></Text>
                 <Text style={{ fontSize: 10, color: 'grey' }}>{address}</Text>
             </View>
             <View style={styles.topbut}>

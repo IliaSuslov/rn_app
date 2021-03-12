@@ -8,35 +8,31 @@ import {
 import CheckBox from '@react-native-community/checkbox';
 
 
-const Product = ({ navigation }) => {
-    // console.log({navigation});
+const Product = (props) => {
+    const { name, desc, addons, price, mass } = props
     const [isSelected, setSelection] = useState(false);
+    const setSelected = (i) => {
+        setSelection({ isSelected: !isSelected })
+    }
     return (
         <View style={styles.desc}>
             <View>
-                <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 5 }}></Text>
-                <Text style={{ color: 'grey', fontSize: 10, marginBottom: 5 }}></Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 18, marginBottom: 5 }}>{name}</Text>
+                <Text style={{ color: 'grey', fontSize: 10, marginBottom: 5 }}>{desc}</Text>
             </View>
-            <View style={styles.checkboxContainer}>
-                <CheckBox
-                    value={isSelected}
-                    onValueChange={setSelection}
-                    style={styles.checkbox}
-                />
-                <Text style={styles.label}></Text>
-
-            </View>
-            <View style={styles.checkboxContainer}>
-                <CheckBox
-                    value={isSelected}
-                    onValueChange={setSelection}
-                    style={styles.checkbox}
-                />
-                <Text style={styles.label}></Text>
-            </View>
+            {addons.map((a, i) =>
+                <View key={`addons-${i}`} style={styles.checkboxContainer}>
+                    <CheckBox
+                        value={isSelected}
+                        onValueChange={() => setSelected(i)}
+                        style={styles.checkbox}
+                    />
+                    <Text style={styles.label}>{a}</Text>
+                </View>
+            )}
             <View style={styles.price}>
-                <Text style={{ fontWeight: 'bold', fontSize: 18 }}></Text>
-                <Text style={{ position: 'absolute', right: 0 }}></Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 18 }}>{price}</Text>
+                <Text style={{ position: 'absolute', right: 0 }}>{mass}</Text>
             </View>
             <View style={styles.buttoncon}>
                 <TouchableOpacity
@@ -57,6 +53,7 @@ const styles = StyleSheet.create({
     },
     price: {
         marginTop: 5,
+        marginBottom: 10,
         flexDirection: 'row'
     },
     button: {
